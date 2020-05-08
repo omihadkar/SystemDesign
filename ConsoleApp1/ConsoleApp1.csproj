@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <StartupObject>ConsoleApp1.JPMC2</StartupObject>
+    <StartupObject>ConsoleApp1.Graph_Theory.FindPath</StartupObject>
   </PropertyGroup>
 
 </Project>
