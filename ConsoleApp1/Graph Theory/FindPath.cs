@@ -13,28 +13,39 @@ namespace ConsoleApp1.Graph_Theory
         public int minSteps(char[,] grid)
         {
             Queue<Point> q = new Queue<Point>();
-            q.Enqueue(new Point(0,0));
-            grid[0,0] = 'D'; // mark as visited
-            for (int steps = 1; q.Count!=0; steps++)
+            q.Enqueue(new Point(0, 0));
+            grid[0, 0] = 'D'; // mark as visited
+                              //for (int steps = 1; q.Count != 0; steps++)
+                              //{
+
+            int steps = 0;
+            while (q.Count != 0)
             {
+                steps++;
                 for (int sz = q.Count; sz > 0; sz--)
                 {
+                    
                     Point p = q.Dequeue();
 
-                    for (int dir=0;dir<4;dir++)
+                    for (int dir = 0; dir < 4; dir++)
                     {
-                        int r = p.r + DIRS[dir,0];
-                        int c = p.c + DIRS[dir,1];
+                        int r = p.r + DIRS[dir, 0];
+                        int c = p.c + DIRS[dir, 1];
 
                         if (isSafe(grid, r, c))
                         {
-                            if (grid[r,c] == 'X') return steps;
-                            grid[r,c] = 'D';
+                            if (grid[r, c] == 'X')
+                            {
+                                return steps;
+                            }
+                            grid[r, c] = 'D';
                             q.Enqueue(new Point(r, c));
                         }
+                        //    }
                     }
                 }
             }
+
             return -1;
         }
 
@@ -55,10 +66,10 @@ namespace ConsoleApp1.Graph_Theory
 
          static void Main(String[] args)
         {
-            char[,] grid =new char[,] {{'O', 'O', 'O', 'O'},
+            char[,] grid =new char[,] {{'O', 'O', 'O', 'X'},
                          {'D', 'O', 'D', 'O'},
                          {'O', 'O', 'O', 'O'},
-                         {'X', 'D', 'D', 'O'}};
+                         {'D', 'D', 'D', 'O'}};
 
             FindPath fp = new FindPath();
             Console.WriteLine(fp.minSteps(grid));
