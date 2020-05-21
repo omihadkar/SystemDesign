@@ -6,12 +6,13 @@ namespace ConsoleApp1.Dynamic_Programming
 {
     class LongestCommonSequence
     {
-
+        int[,] temp;
         static void Main(string[] args)
         {
             LongestCommonSequence lcs = new LongestCommonSequence();
             lcs.lcsUsualWay("abcdaf", "acbcf");
             lcs.lcsUsingDynamicProgramming("abcdaf", "acbcf");
+            var hh = lcs.temp;
             Console.ReadKey();
         }
 
@@ -50,7 +51,7 @@ namespace ConsoleApp1.Dynamic_Programming
             char[] firstChar = first.ToCharArray();
             char[] secondChar = second.ToCharArray();
 
-            int[,] temp = new int[firstChar.Length + 1, secondChar.Length + 1];
+            temp = new int[firstChar.Length + 1, secondChar.Length + 1];
 
             for (int i = 0; i < firstChar.Length; i++)
             {
